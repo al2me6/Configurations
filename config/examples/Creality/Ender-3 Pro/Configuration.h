@@ -73,7 +73,7 @@
 // @section info
 
 // Author info of this build printed to the host during boot and M115
-#define STRING_CONFIG_H_AUTHOR "(thisiskeithb, Ender-3 Pro)" // Who made the changes.
+#define STRING_CONFIG_H_AUTHOR "(al2me6, Ender-3 Pro)" // Who made the changes.
 //#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
 /**
@@ -91,7 +91,7 @@
 #define SHOW_BOOTSCREEN
 
 // Show the bitmap in Marlin/_Bootscreen.h on startup.
-#define SHOW_CUSTOM_BOOTSCREEN
+// #define SHOW_CUSTOM_BOOTSCREEN
 
 // Show the bitmap in Marlin/_Statusscreen.h on the status screen.
 #define CUSTOM_STATUS_SCREEN_IMAGE
@@ -837,7 +837,7 @@
  *
  * See https://github.com/synthetos/TinyG/wiki/Jerk-Controlled-Motion-Explained
  */
-//#define S_CURVE_ACCELERATION
+#define S_CURVE_ACCELERATION
 
 //===========================================================================
 //============================= Z Probe Options =============================
@@ -1363,13 +1363,13 @@
 #endif
 
 // Add a menu item to move between bed corners for manual bed adjustment
-//#define LEVEL_BED_CORNERS
+#define LEVEL_BED_CORNERS
 
 #if ENABLED(LEVEL_BED_CORNERS)
   #define LEVEL_CORNERS_INSET_LFRB { 30, 30, 30, 30 } // (mm) Left, Front, Right, Back insets
-  #define LEVEL_CORNERS_HEIGHT      0.0   // (mm) Z height of nozzle at leveling points
+  #define LEVEL_CORNERS_HEIGHT      0.1   // (mm) Z height of nozzle at leveling points
   #define LEVEL_CORNERS_Z_HOP       4.0   // (mm) Z height of nozzle between leveling points
-  //#define LEVEL_CENTER_TOO              // Move to the center after the last corner
+  #define LEVEL_CENTER_TOO              // Move to the center after the last corner
 #endif
 
 /**
@@ -1516,8 +1516,8 @@
 
 // Preheat Constants
 #define PREHEAT_1_LABEL       "PLA"
-#define PREHEAT_1_TEMP_HOTEND 185
-#define PREHEAT_1_TEMP_BED     45
+#define PREHEAT_1_TEMP_HOTEND 205
+#define PREHEAT_1_TEMP_BED     55
 #define PREHEAT_1_FAN_SPEED   255 // Value from 0 to 255
 
 #define PREHEAT_2_LABEL       "ABS"
@@ -2368,24 +2368,24 @@
   #define NEOPIXEL_PIN     4       // LED driving pin
   //#define NEOPIXEL2_TYPE NEOPIXEL_TYPE
   //#define NEOPIXEL2_PIN    5
-  #define NEOPIXEL_PIXELS 30       // Number of LEDs in the strip. (Longest strip when NEOPIXEL2_SEPARATE is disabled.)
-  #define NEOPIXEL_IS_SEQUENTIAL   // Sequential display for temperature change - LED by LED. Disable to change all LEDs at once.
-  #define NEOPIXEL_BRIGHTNESS 127  // Initial brightness (0-255)
-  //#define NEOPIXEL_STARTUP_TEST  // Cycle through colors at startup
+#define NEOPIXEL_PIXELS 30       // Number of LEDs in the strip. (Longest strip when NEOPIXEL2_SEPARATE is disabled.)
+#define NEOPIXEL_IS_SEQUENTIAL   // Sequential display for temperature change - LED by LED. Disable to change all LEDs at once.
+#define NEOPIXEL_BRIGHTNESS 127  // Initial brightness (0-255)
+//#define NEOPIXEL_STARTUP_TEST  // Cycle through colors at startup
 
-  // Support for second Adafruit NeoPixel LED driver controlled with M150 S1 ...
-  //#define NEOPIXEL2_SEPARATE
-  #if ENABLED(NEOPIXEL2_SEPARATE)
-    #define NEOPIXEL2_PIXELS      15  // Number of LEDs in the second strip
-    #define NEOPIXEL2_BRIGHTNESS 127  // Initial brightness (0-255)
-    #define NEOPIXEL2_STARTUP_TEST    // Cycle through colors at startup
-  #else
-    //#define NEOPIXEL2_INSERIES      // Default behavior is NeoPixel 2 in parallel
-  #endif
+// Support for second Adafruit NeoPixel LED driver controlled with M150 S1 ...
+//#define NEOPIXEL2_SEPARATE
+#if ENABLED(NEOPIXEL2_SEPARATE)
+#define NEOPIXEL2_PIXELS      15  // Number of LEDs in the second strip
+#define NEOPIXEL2_BRIGHTNESS 127  // Initial brightness (0-255)
+#define NEOPIXEL2_STARTUP_TEST    // Cycle through colors at startup
+#else
+//#define NEOPIXEL2_INSERIES      // Default behavior is NeoPixel 2 in parallel
+#endif
 
-  // Use a single NeoPixel LED for static (background) lighting
-  //#define NEOPIXEL_BKGD_LED_INDEX  0               // Index of the LED to use
-  //#define NEOPIXEL_BKGD_COLOR { 255, 255, 255, 0 } // R, G, B, W
+// Use a single NeoPixel LED for static (background) lighting
+//#define NEOPIXEL_BKGD_LED_INDEX  0               // Index of the LED to use
+//#define NEOPIXEL_BKGD_COLOR { 255, 255, 255, 0 } // R, G, B, W
 #endif
 
 /**

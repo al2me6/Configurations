@@ -952,7 +952,7 @@
  * vibration and surface artifacts. The algorithm adapts to provide the best possible step smoothing at the
  * lowest stepping frequencies.
  */
-//#define ADAPTIVE_STEP_SMOOTHING
+#define ADAPTIVE_STEP_SMOOTHING
 
 /**
  * Custom Microstepping
@@ -1052,7 +1052,7 @@
 #if HAS_LCD_MENU
 
   // Include a page of printer information in the LCD Main Menu
-  #define LCD_INFO_MENU
+  // #define LCD_INFO_MENU
   #if ENABLED(LCD_INFO_MENU)
     //#define LCD_PRINTER_INFO_IS_BOOTSCREEN // Show bootscreen(s) instead of Printer Info pages
   #endif
@@ -1092,13 +1092,13 @@
 #define STATUS_MESSAGE_SCROLLING
 
 // On the Info Screen, display XY with one decimal place when possible
-//#define LCD_DECIMAL_SMALL_XY
+#define LCD_DECIMAL_SMALL_XY
 
 // The timeout (in ms) to return to the status screen from sub-menus
 //#define LCD_TIMEOUT_TO_STATUS 15000
 
 // Add an 'M73' G-code to set the current percentage
-//#define LCD_SET_PROGRESS_MANUALLY
+#define LCD_SET_PROGRESS_MANUALLY
 
 // Show the E position (filament used) during printing
 //#define LCD_SHOW_E_TOTAL
@@ -1108,11 +1108,11 @@
 #endif
 
 #if HAS_GRAPHICAL_LCD && EITHER(SDSUPPORT, LCD_SET_PROGRESS_MANUALLY)
-  //#define PRINT_PROGRESS_SHOW_DECIMALS // Show progress with decimal digits
-  //#define SHOW_REMAINING_TIME          // Display estimated time to completion
+  #define PRINT_PROGRESS_SHOW_DECIMALS // Show progress with decimal digits
+  #define SHOW_REMAINING_TIME          // Display estimated time to completion
   #if ENABLED(SHOW_REMAINING_TIME)
-    //#define USE_M73_REMAINING_TIME     // Use remaining time from M73 command instead of estimation
-    //#define ROTATE_PROGRESS_DISPLAY    // Display (P)rogress, (E)lapsed, and (R)emaining time
+    #define USE_M73_REMAINING_TIME     // Use remaining time from M73 command instead of estimation
+    #define ROTATE_PROGRESS_DISPLAY    // Display (P)rogress, (E)lapsed, and (R)emaining time
   #endif
 #endif
 
@@ -1133,9 +1133,7 @@
   // Enable this option and set to HIGH if your SD cards are incorrectly detected.
   //#define SD_DETECT_STATE HIGH
 
-  #if NONE(POWER_LOSS_RECOVERY, BINARY_FILE_TRANSFER, SDCARD_EEPROM_EMULATION)
-    #define SDCARD_READONLY                 // Read-only SD card (to save over 2K of flash)
-  #endif
+  //#define SDCARD_READONLY                 // Read-only SD card (to save over 2K of flash)
 
   #define SD_PROCEDURE_DEPTH 1              // Increase if you need more nested M32 calls
 
@@ -1164,9 +1162,9 @@
    * an option on the LCD screen to continue the print from the last-known
    * point in the file.
    */
-  //#define POWER_LOSS_RECOVERY
+  #define POWER_LOSS_RECOVERY
   #if ENABLED(POWER_LOSS_RECOVERY)
-    #define PLR_ENABLED_DEFAULT   false // Power Loss Recovery enabled by default. (Set with 'M413 Sn' & M500)
+    #define PLR_ENABLED_DEFAULT   true // Power Loss Recovery enabled by default. (Set with 'M413 Sn' & M500)
     //#define BACKUP_POWER_SUPPLY       // Backup power / UPS to move the steppers on power loss
     //#define POWER_LOSS_ZRAISE       2 // (mm) Z axis raise on resume (on power loss with UPS)
     //#define POWER_LOSS_PIN         44 // Pin to detect power loss. Set to -1 to disable default pin on boards without module.
@@ -1383,12 +1381,12 @@
   #define STATUS_HOTEND_INVERTED      // Show solid nozzle bitmaps when heating (Requires STATUS_HOTEND_ANIM)
   #define STATUS_HOTEND_ANIM          // Use a second bitmap to indicate hotend heating
   #define STATUS_BED_ANIM             // Use a second bitmap to indicate bed heating
-  #define STATUS_CHAMBER_ANIM         // Use a second bitmap to indicate chamber heating
+  //#define STATUS_CHAMBER_ANIM         // Use a second bitmap to indicate chamber heating
   //#define STATUS_CUTTER_ANIM        // Use a second bitmap to indicate spindle / laser active
   //#define STATUS_ALT_BED_BITMAP     // Use the alternative bed bitmap
   //#define STATUS_ALT_FAN_BITMAP     // Use the alternative fan bitmap
   //#define STATUS_FAN_FRAMES 3       // :[0,1,2,3,4] Number of fan animation frames
-  //#define STATUS_HEAT_PERCENT       // Show heating in a progress bar
+  #define STATUS_HEAT_PERCENT       // Show heating in a progress bar
   //#define BOOT_MARLIN_LOGO_SMALL    // Show a smaller Marlin logo on the Boot Screen (saving 399 bytes of flash)
   //#define BOOT_MARLIN_LOGO_ANIMATED // Animated Marlin logo. Costs ~‭3260 (or ~940) bytes of PROGMEM.
 
@@ -1619,12 +1617,12 @@
  *
  * See https://marlinfw.org/docs/features/lin_advance.html for full instructions.
  */
-//#define LIN_ADVANCE
+#define LIN_ADVANCE
 #if ENABLED(LIN_ADVANCE)
   //#define EXTRA_LIN_ADVANCE_K // Enable for second linear advance constants
-  #define LIN_ADVANCE_K 0.22    // Unit: mm compression per 1mm/s extruder speed
+  #define LIN_ADVANCE_K 0    // Unit: mm compression per 1mm/s extruder speed
   //#define LA_DEBUG            // If enabled, this will generate debug information output over USB.
-  //#define EXPERIMENTAL_SCURVE // Enable this option to permit S-Curve Acceleration
+  #define EXPERIMENTAL_SCURVE // Enable this option to permit S-Curve Acceleration
 #endif
 
 // @section leveling
@@ -1760,7 +1758,7 @@
 //
 // G2/G3 Arc Support
 //
-#define ARC_SUPPORT                 // Disable this feature to save ~3226 bytes
+//#define ARC_SUPPORT                 // Disable this feature to save ~3226 bytes
 #if ENABLED(ARC_SUPPORT)
   #define MM_PER_ARC_SEGMENT      1 // (mm) Length (or minimum length) of each arc segment
   //#define ARC_SEGMENTS_PER_R    1 // Max segment length, MM_PER = Min
